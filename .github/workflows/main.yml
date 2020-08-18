@@ -3,14 +3,27 @@ name: CI
 on: [push]
 
 jobs:
-  cfn-lint:
+  test-pip:
     runs-on: ubuntu-latest
-    
+    strategy:
+      matrix:
+        attempt:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+      fail-fast: false
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: cfn-lint
-      uses: ScottBrenner/cfn-lint-action@1.1.0
-      with:
-        args: "folder/**/*.yaml"
+    - name: pip install scipy
+      run: |
+        source <(curl -sL http://ci.q-ctrl.com)
+        ./ci docker run qctrl/python-build:3.7 sh -- -c '
+          pip install scipy
+        '
 
