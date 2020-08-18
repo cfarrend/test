@@ -24,6 +24,6 @@ jobs:
       run: |
         source <(curl -sL http://ci.q-ctrl.com)
         ./ci docker run qctrl/python-build:3.7 sh -- -c '
-          pip install scipy
+          pip install tensorflow==2.2.0
         '
 
