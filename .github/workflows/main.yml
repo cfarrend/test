@@ -20,6 +20,7 @@ jobs:
           - 10
       fail-fast: false
     steps:
+    - uses: actions/checkout@v2
     - name: pip install scipy
       run: |
         source <(curl -sL http://ci.q-ctrl.com)
